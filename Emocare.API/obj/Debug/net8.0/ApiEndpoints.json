@@ -1,0 +1,418 @@
+[
+  {
+    "ContainingType": "Emocare.API.Controllers.UserManageController",
+    "Method": "GetPsychologist",
+    "RelativePath": "api/admin/allPsychologist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserManageController",
+    "Method": "GetAll",
+    "RelativePath": "api/admin/allUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserManageController",
+    "Method": "Verify",
+    "RelativePath": "api/admin/psychologist/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.TaskController",
+    "Method": "GetAllTask",
+    "RelativePath": "api/admin/Task",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.TaskController",
+    "Method": "AddTask",
+    "RelativePath": "api/admin/Task",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.Task.InsertTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.TaskController",
+    "Method": "GetTaskById",
+    "RelativePath": "api/admin/Task/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.TaskController",
+    "Method": "UpdateTask",
+    "RelativePath": "api/admin/Task/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.Task.InsertTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.TaskController",
+    "Method": "DeleteTask",
+    "RelativePath": "api/admin/Task/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserManageController",
+    "Method": "Ban",
+    "RelativePath": "api/admin/user/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.AuthenticationController",
+    "Method": "ChangeByPrevious",
+    "RelativePath": "api/authentication/ForgotPassword/ByPrevious",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.User.ForgotPasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.AuthenticationController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/authentication/ForgotPassword/Password",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.User.ForgotChangeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.AuthenticationController",
+    "Method": "Login",
+    "RelativePath": "api/authentication/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.Auth.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.ChatController",
+    "Method": "GetMessage",
+    "RelativePath": "api/chat/message",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.ChatController",
+    "Method": "GetSession",
+    "RelativePath": "api/chat/session/{sessionId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.ChatController",
+    "Method": "GetSession",
+    "RelativePath": "api/chat/sessions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.PsychologistController",
+    "Method": "RegisterPsychologist",
+    "RelativePath": "api/psychologist/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Age",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Job",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RelationshipStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Country",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "City",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmailAddress",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ConfirmPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Specialization",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LicenseNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UploadLicense",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Experience",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Biography",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Education",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.ReflectionController",
+    "Method": "GetReflection",
+    "RelativePath": "api/reflection/Daily",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.Reflection.DailyJournalDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.ReflectionController",
+    "Method": "GetToday",
+    "RelativePath": "api/reflection/Daily",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.ReflectionController",
+    "Method": "GetWeek",
+    "RelativePath": "api/reflection/Weekly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/users/password",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.User.PasswordChangeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserController",
+    "Method": "ViewProfile",
+    "RelativePath": "api/users/profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/users/profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.User.UpdateProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserController",
+    "Method": "UpdateProfilePicture",
+    "RelativePath": "api/users/profilePicture",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserController",
+    "Method": "RegisterUser",
+    "RelativePath": "api/users/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Emocare.Application.DTOs.User.UserRegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,925 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Emocare API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/authentication/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/authentication/ForgotPassword/ByPrevious": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/authentication/ForgotPassword/Password": {
+      "patch": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotChangeDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotChangeDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotChangeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/chat/sessions": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/chat/message": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/chat/session/{sessionId}": {
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/psychologist/register": {
+      "post": {
+        "tags": [
+          "Psychologist"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Age",
+                  "ConfirmPassword",
+                  "EmailAddress",
+                  "FullName",
+                  "Gender",
+                  "Job",
+                  "LicenseNumber",
+                  "Password",
+                  "RelationshipStatus",
+                  "Specialization"
+                ],
+                "type": "object",
+                "properties": {
+                  "FullName": {
+                    "maxLength": 30,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "Age": {
+                    "maximum": 99,
+                    "minimum": 13,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Gender": {
+                    "maxLength": 6,
+                    "type": "string"
+                  },
+                  "Job": {
+                    "type": "string"
+                  },
+                  "RelationshipStatus": {
+                    "type": "string"
+                  },
+                  "Country": {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  "City": {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  "EmailAddress": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "Password": {
+                    "type": "string"
+                  },
+                  "ConfirmPassword": {
+                    "type": "string"
+                  },
+                  "Specialization": {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  "LicenseNumber": {
+                    "maxLength": 50,
+                    "type": "string"
+                  },
+                  "UploadLicense": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Experience": {
+                    "maximum": 60,
+                    "minimum": 0,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Biography": {
+                    "maxLength": 1000,
+                    "type": "string"
+                  },
+                  "Education": {
+                    "maxLength": 200,
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "FullName": {
+                  "style": "form"
+                },
+                "Age": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Job": {
+                  "style": "form"
+                },
+                "RelationshipStatus": {
+                  "style": "form"
+                },
+                "Country": {
+                  "style": "form"
+                },
+                "City": {
+                  "style": "form"
+                },
+                "EmailAddress": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                },
+                "ConfirmPassword": {
+                  "style": "form"
+                },
+                "Specialization": {
+                  "style": "form"
+                },
+                "LicenseNumber": {
+                  "style": "form"
+                },
+                "UploadLicense": {
+                  "style": "form"
+                },
+                "Experience": {
+                  "style": "form"
+                },
+                "Biography": {
+                  "style": "form"
+                },
+                "Education": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/reflection/Daily": {
+      "post": {
+        "tags": [
+          "Reflection"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DailyJournalDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DailyJournalDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DailyJournalDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reflection"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/reflection/Weekly": {
+      "get": {
+        "tags": [
+          "Reflection"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/Task": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertTaskDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertTaskDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertTaskDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/Task/{id}": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Task"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertTaskDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertTaskDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsertTaskDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Task"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegisterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegisterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/password": {
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordChangeDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordChangeDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordChangeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/profile": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/profilePicture": {
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/allUsers": {
+      "get": {
+        "tags": [
+          "UserManage"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/allPsychologist": {
+      "get": {
+        "tags": [
+          "UserManage"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/psychologist/{id}": {
+      "patch": {
+        "tags": [
+          "UserManage"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/admin/user/{id}": {
+      "patch": {
+        "tags": [
+          "UserManage"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DailyJournalDto": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "nullable": true
+          },
+          "mood": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ForgotChangeDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "newPassword": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ForgotPasswordDto": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "previousPassword": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsertTaskDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "moodTags": {
+            "$ref": "#/components/schemas/Mood"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Mood": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PasswordChangeDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "oldPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "newPassword": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateProfileDto": {
+        "required": [
+          "age",
+          "fullName",
+          "gender",
+          "job",
+          "relationshipStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "maxLength": 15,
+            "minLength": 3,
+            "type": "string"
+          },
+          "age": {
+            "maximum": 99,
+            "minimum": 13,
+            "type": "integer",
+            "format": "int32"
+          },
+          "gender": {
+            "maxLength": 6,
+            "minLength": 1,
+            "type": "string"
+          },
+          "job": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "relationshipStatus": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "country": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserRegisterDto": {
+        "required": [
+          "age",
+          "confirmPassword",
+          "emailAddress",
+          "fullName",
+          "gender",
+          "job",
+          "password",
+          "relationshipStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "maxLength": 30,
+            "minLength": 3,
+            "type": "string"
+          },
+          "age": {
+            "maximum": 99,
+            "minimum": 13,
+            "type": "integer",
+            "format": "int32"
+          },
+          "gender": {
+            "maxLength": 6,
+            "minLength": 1,
+            "type": "string"
+          },
+          "job": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "relationshipStatus": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "country": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "emailAddress": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "confirmPassword": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "description": "Enter JWT token ",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "JWT": [ ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\bin\Debug\net8.0\Emocare.Core.deps.json
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\bin\Debug\net8.0\Emocare.Core.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\bin\Debug\net8.0\Emocare.Core.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Core.AssemblyInfoInputs.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Core.AssemblyInfo.cs
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Core.csproj.CoreCompileInputs.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Core.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\refint\Emocare.Core.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Core.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\ref\Emocare.Core.dll

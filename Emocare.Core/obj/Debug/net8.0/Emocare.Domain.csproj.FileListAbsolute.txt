@@ -1,0 +1,12 @@
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\bin\Debug\net8.0\Emocare.Domain.deps.json
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\bin\Debug\net8.0\Emocare.Domain.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\bin\Debug\net8.0\Emocare.Domain.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.csproj.AssemblyReference.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.AssemblyInfoInputs.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.AssemblyInfo.cs
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.csproj.CoreCompileInputs.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\refint\Emocare.Domain.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\ref\Emocare.Domain.dll

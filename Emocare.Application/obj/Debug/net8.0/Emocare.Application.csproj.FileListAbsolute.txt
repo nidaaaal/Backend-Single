@@ -1,0 +1,17 @@
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\bin\Debug\net8.0\Emocare.Application.deps.json
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\bin\Debug\net8.0\Emocare.Application.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\bin\Debug\net8.0\Emocare.Application.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\bin\Debug\net8.0\Emocare.Domain.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\bin\Debug\net8.0\Emocare.Shared.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\bin\Debug\net8.0\Emocare.Domain.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\bin\Debug\net8.0\Emocare.Shared.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare.Application.csproj.AssemblyReference.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare.Application.AssemblyInfoInputs.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare.Application.AssemblyInfo.cs
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare.Application.csproj.CoreCompileInputs.cache
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare..0FD9347D.Up2Date
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare.Application.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\refint\Emocare.Application.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\Emocare.Application.pdb
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Application\obj\Debug\net8.0\ref\Emocare.Application.dll
