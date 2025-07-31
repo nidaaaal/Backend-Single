@@ -1,13 +1,9 @@
 ﻿using Emocare.Domain.Entities.Chat;
+using Emocare.Domain.Entities.Habits;
 using Emocare.Domain.Entities.Journal;
 using Emocare.Domain.Enums.Auth;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Emocare.Domain.Entities.Auth
 {
@@ -79,6 +75,7 @@ namespace Emocare.Domain.Entities.Auth
         public ICollection<JournalEntry>? JournalEntries { get; set; } 
         public ICollection<ChatSession>? ChatSessions { get; set; }
         public ICollection<ChatMessage>? ChatMessages { get; set; }
+        public ICollection<Habit>? Habits { get; set; }
     }
 
 }

@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Emocare",
+    "\\Emocare.Application",
+    "\\Emocare.Application\\Services"
   ],
+  "SelectedNode": "\\Emocare.Application\\Services\\ChatHub.cs",
   "PreviewInSolutionExplorer": false
 }

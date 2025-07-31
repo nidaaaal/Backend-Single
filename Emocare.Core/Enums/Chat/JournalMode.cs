@@ -6,4 +6,16 @@
     CBT,
     Journal
     }
+
+    public enum Mood
+    {
+        Unknown = 0,
+        Happy,
+        Sad,
+        Anxious,
+        Frustrated,
+        Angry,
+        Calm,
+        Grateful
+    }
 }

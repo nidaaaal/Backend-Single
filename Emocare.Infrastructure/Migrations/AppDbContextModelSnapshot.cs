@@ -235,6 +235,133 @@ namespace Emocare.Infrastructure.Migrations
                     b.ToTable("ChatSession");
                 });
 
+            modelBuilder.Entity("Emocare.Domain.Entities.Habits.Habit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Frequency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TargetCount")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Habits");
+                });
+
+            modelBuilder.Entity("Emocare.Domain.Entities.Habits.HabitCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ColorCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HabitCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ColorCode = "#4CAF50",
+                            Name = "Health & Fitness"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ColorCode = "#2196F3",
+                            Name = "Productivity"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ColorCode = "#9C27B0",
+                            Name = "Mindfulness"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ColorCode = "#FF9800",
+                            Name = "Learning"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ColorCode = "#E91E63",
+                            Name = "Relationships"
+                        });
+                });
+
+            modelBuilder.Entity("Emocare.Domain.Entities.Habits.HabitCompletion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CompletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HabitId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HabitId");
+
+                    b.ToTable("HabitCompletion");
+                });
+
             modelBuilder.Entity("Emocare.Domain.Entities.Journal.JournalEntry", b =>
                 {
                     b.Property<int>("Id")
@@ -354,6 +481,36 @@ namespace Emocare.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Emocare.Domain.Entities.Habits.Habit", b =>
+                {
+                    b.HasOne("Emocare.Domain.Entities.Habits.HabitCategory", "Category")
+                        .WithMany("Habits")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Emocare.Domain.Entities.Auth.Users", "User")
+                        .WithMany("Habits")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Emocare.Domain.Entities.Habits.HabitCompletion", b =>
+                {
+                    b.HasOne("Emocare.Domain.Entities.Habits.Habit", "Habit")
+                        .WithMany("Completions")
+                        .HasForeignKey("HabitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Habit");
+                });
+
             modelBuilder.Entity("Emocare.Domain.Entities.Journal.JournalEntry", b =>
                 {
                     b.HasOne("Emocare.Domain.Entities.Auth.Users", "User")
@@ -371,6 +528,8 @@ namespace Emocare.Infrastructure.Migrations
 
                     b.Navigation("ChatSessions");
 
+                    b.Navigation("Habits");
+
                     b.Navigation("JournalEntries");
 
                     b.Navigation("PasswordHistory");
@@ -381,6 +540,16 @@ namespace Emocare.Infrastructure.Migrations
             modelBuilder.Entity("Emocare.Domain.Entities.Chat.ChatSession", b =>
                 {
                     b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("Emocare.Domain.Entities.Habits.Habit", b =>
+                {
+                    b.Navigation("Completions");
+                });
+
+            modelBuilder.Entity("Emocare.Domain.Entities.Habits.HabitCategory", b =>
+                {
+                    b.Navigation("Habits");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,4 +8,13 @@ namespace Emocare.Domain.Enums.Auth
         Psychologist,
         Ai
     }
+
+    public enum UserStatus
+    {
+        Active = 1,
+        Inactive = 2,
+        Locked = 3,
+        Banned = 4
+    }
+
 }
