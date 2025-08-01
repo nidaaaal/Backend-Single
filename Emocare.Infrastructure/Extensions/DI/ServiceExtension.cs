@@ -6,13 +6,14 @@ using Emocare.Domain.Interfaces.Helper.AiChat;
 using Emocare.Domain.Interfaces.Helper.Auth;
 using Emocare.Domain.Interfaces.Repositories;
 using Emocare.Domain.Interfaces.Repositories.Chat;
+using Emocare.Domain.Interfaces.Repositories.Habits;
 using Emocare.Domain.Interfaces.Repositories.User;
 using Emocare.Infrastructure.Extensions.Integrations.CloudinaryExtension;
 using Emocare.Infrastructure.Persistence;
 using Emocare.Infrastructure.Repositories;
 using Emocare.Infrastructure.Repositories.Chat;
+using Emocare.Infrastructure.Repositories.Habits;
 using Emocare.Infrastructure.Repositories.User;
-using Emocare.Shared.Helpers.AiChat;
 using Emocare.Shared.Helpers.Auth;
 using Emocare.Shared.Helpers.Chat;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,9 @@ namespace Emocare.Infrastructure.Extensions.DI
             services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
             services.AddScoped<IChatSessionRepository,ChatSessionRepository>();
             services.AddScoped<IJournalEntryRepository, JournalEntryRepository>();
+            services.AddScoped<IHabitRepository,HabitRepository>();
+            services.AddScoped<IHabitHabitCompletionRepository, HabitHabitCompletionRepository>();
+            services.AddScoped<IHabitCategoryRepository, HabitCategoryRepository>();    
         }
 
         public static void ConfigureServices(this IServiceCollection services)
@@ -51,6 +55,7 @@ namespace Emocare.Infrastructure.Extensions.DI
             services.AddScoped<IChatService, ChatService>();
             services.AddScoped<IReflectionServices, ReflectionServices>();
             services.AddScoped<IPsychologistServices,PsychologistServices>();
+            services.AddScoped<IHabitServices,IHabitServices>();    
         }
 
         public static void ConfigureHelper(this IServiceCollection services)

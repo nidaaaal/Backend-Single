@@ -9,5 +9,8 @@ namespace Emocare.Domain.Interfaces.Repositories.Habits
 {
     public interface IHabitHabitCompletionRepository:IRepository<HabitCompletion>
     {
+        Task<IEnumerable<HabitCompletion?>> GetCompletions(int id, DateTime startDate, DateTime endDate);
+        Task RecordCompletion(int id, int count, DateTime date, string notes);
+        Task<IEnumerable<HabitCompletion?>> GetById(int id);
     }
 }

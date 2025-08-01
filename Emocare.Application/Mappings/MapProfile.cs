@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Emocare.Application.DTOs.Chat;
+using Emocare.Application.DTOs.Habits;
 using Emocare.Application.DTOs.Task;
 using Emocare.Application.DTOs.User;
 using Emocare.Domain.Entities.Auth;
 using Emocare.Domain.Entities.Chat;
+using Emocare.Domain.Entities.Habits;
 using Emocare.Domain.Entities.Task;
 
 
@@ -17,6 +19,7 @@ namespace Emocare.Application.Mappings
             CreateMap<UserProfileDto,Users>().ReverseMap();    
             CreateMap<InsertTaskDto,WellnessTask>().ReverseMap();
             CreateMap<ChatMessage, ChatResponseDto>().ForMember(des => des.Role, opt => opt.MapFrom(x => x.Role.ToString()));
+            CreateMap<Habit,AddHabit>().ReverseMap();
         }
     }
 }

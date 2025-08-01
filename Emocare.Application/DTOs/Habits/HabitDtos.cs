@@ -1,13 +1,8 @@
-﻿using Emocare.Domain.Entities.Auth;
-using Emocare.Domain.Entities.Habits;
+﻿
 using Emocare.Domain.Enums.Habit;
-using System;
-using System.Collections.Generic;
+
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Emocare.Application.DTOs.Habits
 {

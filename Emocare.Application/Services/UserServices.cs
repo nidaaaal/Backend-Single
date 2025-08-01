@@ -54,8 +54,10 @@ namespace Emocare.Application.Services
         }
         public async Task<ApiResponse<string>> ChangePassword(PasswordChangeDto dto)
         {
+            Guid userId = _userFinder.GetId();
             var user = await _userRepository.GetByEmail(dto.Email);
             if (user == null) return ResponseBuilder.Fail<string>("No UserFound", "ChangePassword", 404);
+            if (user.Id != userId) return ResponseBuilder.Fail<string>("Invalid Email Id.Try Again! ", "ChangePassword", 404);
             if (!_passwordHasher.VerifyPassword(dto.OldPassword, user.PasswordHash)) return ResponseBuilder.Fail<string>("Incorrect Password", "ChangePassword", 404);
             if (_passwordHasher.VerifyPassword(dto.NewPassword, user.PasswordHash)) return ResponseBuilder.Fail<string>("cannot change with older Password", "ChangePassword", 404);
             var (res, mes) = _passwordValidator.ValidatePassword(dto.NewPassword);
@@ -97,6 +99,8 @@ namespace Emocare.Application.Services
         }
         public async Task<ApiResponse<string>> ChangeNewPassword(string email,string password)
         {
+            Guid userId = _userFinder.GetId();
+
             var user = await _userRepository.GetByEmail(email);
             if (user == null) return ResponseBuilder.Fail<string>("No UserFound", "ChangePassword", 404);
             if (user.ChangeRequest)

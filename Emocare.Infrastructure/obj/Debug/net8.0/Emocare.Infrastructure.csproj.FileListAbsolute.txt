@@ -19,3 +19,4 @@ D:\Dotnet-Core\EntityFrameworkCore\Emocare.Infrastructure\obj\Debug\net8.0\refin
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.Infrastructure\obj\Debug\net8.0\Emocare.Infrastructure.pdb
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.Infrastructure\obj\Debug\net8.0\Emocare.Infrastructure.genruntimeconfig.cache
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.Infrastructure\obj\Debug\net8.0\ref\Emocare.Infrastructure.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Infrastructure\obj\Debug\net8.0\Emocare.Infrastructure.sourcelink.json

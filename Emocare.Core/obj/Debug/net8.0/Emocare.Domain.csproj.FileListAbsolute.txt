@@ -10,3 +10,4 @@ D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\refint\Emocare.Domain.dll
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.pdb
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\ref\Emocare.Domain.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.Core\obj\Debug\net8.0\Emocare.Domain.sourcelink.json
