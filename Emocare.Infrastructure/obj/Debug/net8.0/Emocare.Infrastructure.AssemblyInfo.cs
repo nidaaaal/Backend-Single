@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Emocare.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ded7216598d7ce49a3dc8e05ad0e6de22d28e0c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+334b60ee9f836e1a361958be3db11568e7680aa4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Emocare.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Emocare.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

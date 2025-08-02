@@ -11,9 +11,9 @@ namespace Emocare.Infrastructure.Repositories.Habits
     {
         public HabitHabitCompletionRepository(AppDbContext context) : base(context) { }
 
-        public async Task<IEnumerable<HabitCompletion?>> GetCompletions(int id,DateTime startDate,DateTime endDate) 
+        public async Task<IEnumerable<HabitCompletion?>> GetCompletions(int id) 
             => await _dbSet.OrderBy(x=>x.CompletionDate)
-            .Where(x => x.HabitId == id && x.CompletionDate >= startDate && x.CompletionDate<= endDate).ToListAsync();
+            .Where(x => x.HabitId == id).ToListAsync();
         public async Task RecordCompletion(int id, int count, DateTime date, string notes)
         {
             var entity = await _dbSet.FirstOrDefaultAsync(x => x.HabitId == id && x.CompletionDate.Date == date.Date);

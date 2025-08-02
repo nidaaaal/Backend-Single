@@ -284,22 +284,6 @@
               "type": "integer",
               "format": "int32"
             }
-          },
-          {
-            "name": "startDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
           }
         ],
         "responses": {
@@ -1019,8 +1003,7 @@
       "Frequency": {
         "enum": [
           1,
-          2,
-          3
+          2
         ],
         "type": "integer",
         "format": "int32"

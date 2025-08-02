@@ -33,7 +33,7 @@ namespace Emocare.API.Controllers
         public async Task<IActionResult> Delete(int id) => Ok(await _habitServices.DeleteHabitAsync(id));
 
         [HttpGet("{id}/completion")]
-        public async Task<IActionResult> Completion(int id,DateTime startDate,DateTime endDate) => Ok(await _habitServices.GetCompletionsAsync(id,startDate,endDate));
+        public async Task<IActionResult> Completion(int id) => Ok(await _habitServices.GetCompletionsAsync(id));
 
         [HttpPost("{id}/completion")]
         public async Task<IActionResult> Record(int id,CompletionRequest completion) => Ok(await _habitServices.RecordCompletionAsync(id,completion));

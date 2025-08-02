@@ -14,7 +14,7 @@ namespace Emocare.Application.Interfaces
         Task <ApiResponse<Habit>?> GetHabitAsync(int id);
         Task <ApiResponse<IEnumerable<Habit?>>> GetUserHabitsAsync();
         Task<ApiResponse<string>?>RecordCompletionAsync(int habitId, CompletionRequest completion);
-        Task<ApiResponse<IEnumerable<HabitCompletion?>>> GetCompletionsAsync(int habitId, DateTime startDate, DateTime endDate);
+        Task<ApiResponse<IEnumerable<HabitCompletion?>>> GetCompletionsAsync(int habitId);
         Task <ApiResponse<HabitStats>?> GetHabitStatsAsync(int habitId);
 
     }

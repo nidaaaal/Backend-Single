@@ -305,16 +305,6 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
-      },
-      {
-        "Name": "startDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "endDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

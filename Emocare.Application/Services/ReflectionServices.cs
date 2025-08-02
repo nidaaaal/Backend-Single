@@ -1,4 +1,6 @@
-﻿using Emocare.Application.Interfaces;
+﻿using AutoMapper;
+using Emocare.Application.DTOs.Reflection;
+using Emocare.Application.Interfaces;
 using Emocare.Domain.Entities.Journal;
 using Emocare.Domain.Enums.AiChat;
 using Emocare.Domain.Interfaces.Helper.AiChat;
@@ -14,12 +16,15 @@ namespace Emocare.Application.Services
         private readonly IOpenRouterStreamService _openRouterStream;
         private readonly IJournalEntryRepository _journalEntry;
         private readonly IUserFinder _userFinder;
+        private readonly IMapper _mapper;
 
-        public ReflectionServices(IOpenRouterStreamService openRouterStream, IJournalEntryRepository journalEntry, IUserFinder userFinder)
+        public ReflectionServices(IOpenRouterStreamService openRouterStream, IJournalEntryRepository journalEntry,
+            IUserFinder userFinder,IMapper mapper)
         {
             _openRouterStream = openRouterStream;
             _journalEntry = journalEntry;
             _userFinder = userFinder;
+            _mapper = mapper;
         }
 
         public async Task<ApiResponse<string>> GetReflection(string prompt, string mood)
@@ -68,11 +73,16 @@ namespace Emocare.Application.Services
             return ResponseBuilder.Success(res.AIReflection, "DailyReflection  Fetched", "GetReflection");
         }
 
-        public async Task<ApiResponse<IEnumerable<JournalEntry?>>> LastWeekDailyReflection()
+        public async Task<ApiResponse<IEnumerable<DailyResponseDto>>> LastWeekDailyReflection()
         {
             Guid id = _userFinder.GetId();
-            var response = await _journalEntry.LastWeek(id) ?? throw new NotFoundException("No Reflection Found on Corresponding Id");
-            return ResponseBuilder.Success(response, "DailyReflection  Fetched", "GetReflection");
+            IEnumerable<JournalEntry> reflections = await _journalEntry.LastWeek(id);
+
+            if (reflections == null || !reflections.Any())
+            throw new NotFoundException("No Reflection Found on Corresponding Id");
+
+            IEnumerable<DailyResponseDto> data = _mapper.Map<List<DailyResponseDto>>(reflections);
+            return ResponseBuilder.Success(data, "DailyReflection  Fetched", "GetReflection");
         }
     }
 }

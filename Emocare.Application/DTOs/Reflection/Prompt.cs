@@ -14,9 +14,10 @@ namespace Emocare.Application.DTOs.Reflection
     #region response
     public class DailyResponseDto
     {
-        public string reflection { get; set; } = string.Empty;
-        public string mood { get; set; } = string.Empty;
-        public DateTime date { get; set; }  
+        public string Reflection { get; set; } = string.Empty;
+        public string Mood { get; set; } = string.Empty;
+        public string Entry { get; set; } = string.Empty;
+        public DateTime Date { get; set; }  
     }
 
     #endregion response

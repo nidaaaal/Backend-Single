@@ -23,17 +23,16 @@ namespace Emocare.Infrastructure.Repositories.Chat
 
             return find.Date.Date == DateTime.UtcNow.Date;
         }
-        public async Task<JournalEntry?> TodayReflection(Guid id)
+        public async Task<JournalEntry> TodayReflection(Guid id)
         {
             return await _dbSet.OrderByDescending(x => x.Date).FirstOrDefaultAsync(x => x.UserId == id) ??
                   throw new NotFoundException("No User found on The corresponding Id");
         } 
         
-        public async Task<IEnumerable<JournalEntry?>> LastWeek(Guid id)
+        public async Task<IEnumerable<JournalEntry>> LastWeek(Guid id)
         {
-            return await _dbSet.OrderByDescending(x => x.Date).Take(7).Where(x => x.UserId == id).ToListAsync() ??
-                  throw new NotFoundException("No User found on The corresponding Id");
-
+            var oneweek = DateTime.Now.Date.AddDays(-7);
+            return await _dbSet.OrderByDescending(x => x.Date).Where(x => x.UserId == id && x.Date>=oneweek).ToListAsync();
         }
 
     }

@@ -2,9 +2,11 @@
 using Emocare.Application.DTOs.Habits;
 using Emocare.Application.Interfaces;
 using Emocare.Domain.Entities.Habits;
+using Emocare.Domain.Enums.Habit;
 using Emocare.Domain.Interfaces.Helper.AiChat;
 using Emocare.Domain.Interfaces.Repositories.Habits;
 using Emocare.Shared.Helpers.Api;
+using System.Globalization;
 
 namespace Emocare.Application.Services
 {
@@ -84,9 +86,9 @@ namespace Emocare.Application.Services
             return ResponseBuilder.Success("Habit Completion Added", "Habit Completion Recorded", "HabitServices");
 
         }
-        public async Task<ApiResponse<IEnumerable<HabitCompletion?>>> GetCompletionsAsync(int habitId, DateTime startDate, DateTime endDate)
+        public async Task<ApiResponse<IEnumerable<HabitCompletion?>>> GetCompletionsAsync(int habitId)
         {
-          var completions = await _completionRepository.GetCompletions(habitId, startDate, endDate);
+          var completions = await _completionRepository.GetCompletions(habitId);
             return ResponseBuilder.Success(completions, "Fetched all the completions", "HabitServices");
 
         }
@@ -98,44 +100,95 @@ namespace Emocare.Application.Services
             if (habit.UserId != userId) throw new ForbiddenException("No Access to this Id ! Id miss match");
 
             var completions = await _completionRepository.GetById(habitId) ?? throw new NotFoundException("No Habit completions Found");
+
             var stats = new HabitStats();
             stats.TotalCompletions = completions.Sum(x => x.Count);
 
+            var completionDates = completions
+            .Select(c => c.CompletionDate.Date)
+            .Distinct()
+            .OrderBy(d => d)
+            .ToList();
+
             var currentStreak = 0;
             var longestStreak = 0;
-            var tempStreak = 0;
-            DateTime? lastDate = null;
+            int activeDays = (DateTime.Today - habit.StartDate.Date).Days + 1;
+            int targetCompletions = 0;
 
-            foreach (var date in completions)
+            if (habit.Frequency == Frequency.Daily)
             {
-                if (lastDate == null || (date.CompletionDate - lastDate.Value).Days == 1)
+                int tempStreak = 0;
+                DateTime? lastDate = null;
+
+
+
+                foreach (var date in completionDates)
                 {
-                    tempStreak++;
-                } 
-                else
-                {
-                    tempStreak = 1;
-                }
-                if (tempStreak > longestStreak)
-                {
-                    longestStreak = tempStreak;
+                    if (lastDate == null || (date - lastDate.Value).Days == 1)
+                        tempStreak++;
+
+                    else if ((date - lastDate.Value).Days > 1)
+                        tempStreak = 1;
+
+                    if (tempStreak > longestStreak)
+                        longestStreak = tempStreak;
+
+
+                    if (lastDate.HasValue && date.Date == DateTime.Now.Date)
+                        currentStreak = tempStreak;
+
+                    lastDate = date;
+
                 }
 
-                lastDate = date.CompletionDate;
+                targetCompletions = activeDays * habit.TargetCount;
+            }
+            else if (habit.Frequency == Frequency.Weekly)
+            {
+                int tempStreak = 0;
+                int? lastWeek = null;
+                int currentWeek = CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(
+                                  DateTime.Today, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
 
-                if (lastDate.HasValue && date.CompletionDate.Date == DateTime.Now.Date)
+
+                var groupedWeeks = completionDates
+                                   .GroupBy(date => CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(
+                                   date,
+                                   CalendarWeekRule.FirstFourDayWeek,
+                                   DayOfWeek.Monday))
+                                   .OrderBy(g => g.Key)
+                                   .ToList();
+
+
+                foreach (var weekGroup in groupedWeeks)
                 {
-                    currentStreak = tempStreak;
+                    int week = weekGroup.Key;
+
+                    if (lastWeek == null || week == lastWeek + 1)
+                        tempStreak++;
+
+                    if (week > lastWeek)
+                        tempStreak = 1;
+
+                    if (tempStreak > longestStreak)
+                        longestStreak = tempStreak;
+
+                    if (week == currentWeek)
+                        currentStreak = tempStreak;
+
+                    lastWeek=week;
                 }
+
+                int activeWeeks = (int)Math.Ceiling(activeDays / 7.0);
+
+                targetCompletions = activeWeeks * habit.TargetCount;
             }
 
                 stats.CurrentStreak = currentStreak;
                 stats.LongestStreak= longestStreak;
                 
-                var ActiveDays = (DateTime.Today - habit.StartDate.Date).Days+1;
-                var TargetCompletion =ActiveDays * habit.TargetCount;
-                stats.CompletionPercentage = TargetCompletion > 0 ?
-                ((decimal)stats.TotalCompletions / TargetCompletion) * 100 : 100;
+                stats.CompletionPercentage = targetCompletions > 0 ?
+                ((decimal)stats.TotalCompletions / targetCompletions) * 100 : 100;
 
                 return ResponseBuilder.Success(stats, "User Habit Status Analyzed", "HabitServices");
         }

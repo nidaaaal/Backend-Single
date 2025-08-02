@@ -1,4 +1,5 @@
-﻿using Emocare.Domain.Entities.Journal;
+﻿using Emocare.Application.DTOs.Reflection;
+using Emocare.Domain.Entities.Journal;
 using Emocare.Shared.Helpers.Api;
 
 
@@ -8,6 +9,6 @@ namespace Emocare.Application.Interfaces
     {
         Task<ApiResponse<string>> GetReflection(string prompt, string mood);
         Task<ApiResponse<string>?> DailyReflection();
-        Task<ApiResponse<IEnumerable<JournalEntry?>>> LastWeekDailyReflection();
+        Task<ApiResponse<IEnumerable<DailyResponseDto>>> LastWeekDailyReflection();
     }
 }
