@@ -182,3 +182,4 @@ D:\Dotnet-Core\EntityFrameworkCore\Emocare.API\obj\Debug\net8.0\refint\Emocare.A
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.API\obj\Debug\net8.0\Emocare.API.pdb
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.API\obj\Debug\net8.0\Emocare.API.genruntimeconfig.cache
 D:\Dotnet-Core\EntityFrameworkCore\Emocare.API\obj\Debug\net8.0\ref\Emocare.API.dll
+D:\Dotnet-Core\EntityFrameworkCore\Emocare.API\obj\Debug\net8.0\Emocare.API.sourcelink.json

@@ -17,7 +17,6 @@ namespace Emocare.Domain.Entities.Chat
         public UserRoles Role { get; set; }
 
         [Required(ErrorMessage = "Message is required.")]
-        [StringLength(1000, ErrorMessage = "Message cannot exceed 1000 characters.")]
         public string Message { get; set; } = string.Empty;
 
         [Required]

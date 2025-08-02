@@ -55,7 +55,7 @@ namespace Emocare.Infrastructure.Extensions.DI
             services.AddScoped<IChatService, ChatService>();
             services.AddScoped<IReflectionServices, ReflectionServices>();
             services.AddScoped<IPsychologistServices,PsychologistServices>();
-            services.AddScoped<IHabitServices,IHabitServices>();    
+            services.AddScoped<IHabitServices,HabitServices>();    
         }
 
         public static void ConfigureHelper(this IServiceCollection services)

@@ -45,8 +45,8 @@ namespace Emocare.Application.DTOs.Habits
 
     public class CompletionRequest
     {
-        public DateTime? Date { get; set; }
-        public int? Count { get; set; }
+        public DateTime Date { get; set; }
+        public int Count { get; set; }
         public string Notes { get; set; }
     }
     #endregion

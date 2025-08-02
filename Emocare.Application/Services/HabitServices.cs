@@ -67,19 +67,20 @@ namespace Emocare.Application.Services
             if (data?.UserId != userId) throw new ForbiddenException("No Access to this Id ! Id miss match");
             return ResponseBuilder.Success(data, "habit fetched", "HabitServices");
         }
-        public async Task<ApiResponse<IEnumerable<Habit?>>> GetUserHabitsAsync(Guid userId)
+        public async Task<ApiResponse<IEnumerable<Habit?>>> GetUserHabitsAsync()
         {
+            Guid userId = _userFind.GetId();
             var data = await _habitRepository.GetByUserId(userId);
             return ResponseBuilder.Success(data, "GetHabit", "HabitServices");
 
         }
-        public async Task<ApiResponse<string>?> RecordCompletionAsync(int habitId, DateTime date,string notes,int count = 1)
+        public async Task<ApiResponse<string>?> RecordCompletionAsync(int habitId, CompletionRequest completion)
         {
             var userId = _userFind.GetId();
 
             var exist = await _habitRepository.GetById(habitId) ?? throw new NotFoundException("Habit Id Not Found!");
             if (exist.UserId != userId) throw new ForbiddenException("No Access to this Id ! Id miss match");
-            await _completionRepository.RecordCompletion(habitId,count,date,notes);
+            await _completionRepository.RecordCompletion(habitId, completion.Count, completion.Date, completion.Notes);
             return ResponseBuilder.Success("Habit Completion Added", "Habit Completion Recorded", "HabitServices");
 
         }
@@ -96,22 +97,22 @@ namespace Emocare.Application.Services
             var habit = await _habitRepository.GetById(habitId) ?? throw new NotFoundException("Habit not found");
             if (habit.UserId != userId) throw new ForbiddenException("No Access to this Id ! Id miss match");
 
-            var completions = await _completionRepository.GetById(habitId);
+            var completions = await _completionRepository.GetById(habitId) ?? throw new NotFoundException("No Habit completions Found");
             var stats = new HabitStats();
-            stats.TotalCompletions = completions.Sum(x => x!.Count);
+            stats.TotalCompletions = completions.Sum(x => x.Count);
 
             var currentStreak = 0;
             var longestStreak = 0;
             var tempStreak = 0;
             DateTime? lastDate = null;
 
-            foreach (var streak in completions.OrderBy(c => c!.CompletionDate))
+            foreach (var date in completions)
             {
-                if (lastDate == null || (streak!.CompletionDate - lastDate.Value).Days == 1)
+                if (lastDate == null || (date.CompletionDate - lastDate.Value).Days == 1)
                 {
                     tempStreak++;
-                }
-                if (lastDate == null || (streak!.CompletionDate - lastDate.Value).Days > 1)
+                } 
+                else
                 {
                     tempStreak = 1;
                 }
@@ -119,9 +120,10 @@ namespace Emocare.Application.Services
                 {
                     longestStreak = tempStreak;
                 }
-                lastDate = streak!.CompletionDate;
 
-                if (lastDate.HasValue && streak.CompletionDate == DateTime.Now)
+                lastDate = date.CompletionDate;
+
+                if (lastDate.HasValue && date.CompletionDate.Date == DateTime.Now.Date)
                 {
                     currentStreak = tempStreak;
                 }
@@ -130,10 +132,10 @@ namespace Emocare.Application.Services
                 stats.CurrentStreak = currentStreak;
                 stats.LongestStreak= longestStreak;
                 
-                var ActiveDays = (DateTime.Today - habit.StartDate).Days+1;
+                var ActiveDays = (DateTime.Today - habit.StartDate.Date).Days+1;
                 var TargetCompletion =ActiveDays * habit.TargetCount;
                 stats.CompletionPercentage = TargetCompletion > 0 ?
-                (decimal)stats.TotalCompletions / TargetCompletion * 100 : 100;
+                ((decimal)stats.TotalCompletions / TargetCompletion) * 100 : 100;
 
                 return ResponseBuilder.Success(stats, "User Habit Status Analyzed", "HabitServices");
         }
