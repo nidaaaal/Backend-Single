@@ -28,6 +28,10 @@ namespace Emocare.Infrastructure.Extensions.Relations
             entity.HasMany(x=>x.ChatSessions).WithOne(x=>x.User)
                 .HasForeignKey(x=>x.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasMany(x=>x.PushSubscriptions).WithOne(x=>x.Users)
+                .HasForeignKey(x=>x.UserId)
+                .OnDelete(DeleteBehavior.Cascade).IsRequired(false);   
         }
     }
 }
