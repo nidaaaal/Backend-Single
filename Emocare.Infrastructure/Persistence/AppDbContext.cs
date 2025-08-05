@@ -19,6 +19,7 @@ namespace Emocare.Infrastructure.Persistence
         public DbSet<Habit> Habits { get; set; }
         public DbSet<HabitCategory> HabitCategories { get; set; }   
         public DbSet<HabitCompletion> HabitCompletion { get; set; }
+        public DbSet<UserPushSubscription> UserPushSubscriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -15,18 +15,19 @@ using System.Threading.Tasks;
 
 namespace Emocare.Application.Services
 {
-    public class PsychologistServices:IPsychologistServices
+    public class PsychologistServices : IPsychologistServices
     {
         private readonly IPasswordValidator _passwordValidator;
         private readonly IUserRepository _usersRepository;
+        private readonly IPsychologistRepository _psychologistRepository;
         private readonly IPasswordHistoryRepo _passwordHistoryRepo;
         private readonly ICloudinaryService _cloudinaryService;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IMapper _mapper;
 
-        public PsychologistServices(IUserRepository userRepository, IPasswordValidator passwordValidator,ICloudinaryService cloudinaryService
-            ,IPasswordHasher passwordHasher,IPasswordHistoryRepo passwordHistoryRepo,IMapper mapper
-            ) 
+        public PsychologistServices(IUserRepository userRepository, IPasswordValidator passwordValidator, ICloudinaryService cloudinaryService
+            , IPasswordHasher passwordHasher, IPasswordHistoryRepo passwordHistoryRepo, IMapper mapper, IPsychologistRepository psychologist
+            )
         {
             _passwordValidator = passwordValidator;
             _usersRepository = userRepository;
@@ -34,6 +35,7 @@ namespace Emocare.Application.Services
             _passwordHasher = passwordHasher;
             _passwordHistoryRepo = passwordHistoryRepo;
             _mapper = mapper;
+            _psychologistRepository = psychologist;
         }
 
         public async Task<ApiResponse<string>> PsychologistRegister(PsychologistRegisterDto dto)
@@ -77,6 +79,23 @@ namespace Emocare.Application.Services
 
             return ResponseBuilder.Success("Registration Completed", "PsychologistRegister", "UserRegister");
         }
+
+        public async Task<ApiResponse<IEnumerable<Users>>> GetAllPsychologist()
+        {
+            var users = await _psychologistRepository.GetAll();
+            return ResponseBuilder.Success(users, "All psychologist Data Fetched", "GetAllPsychologist");
+        }
+        public async Task<ApiResponse<string>> VerifyPsychologist(Guid id)
+        {
+            var user = await _psychologistRepository.GetById(id);
+            if (user == null) return ResponseBuilder.Fail<string>("No UserFound", "VerifyPsychologist", 404);
+            if (user.IsApproved) return ResponseBuilder.Fail<string>("User Already Verified", "VerifyPsychologist", 409);
+            user.IsApproved = true;
+            user.ApprovedOn = DateTime.UtcNow;
+            await _psychologistRepository.Update(user);
+            return ResponseBuilder.Success("Psychologist Approved", "Users Data Updated", "VerifyPsychologist");
+
+        }
     }
-}
+   }
 

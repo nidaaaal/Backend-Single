@@ -41,8 +41,8 @@ namespace Emocare.API
             app.UseCors("AllowSpecificOrigin");
             app.UseHttpsRedirection();
             app.UseAuthentication();
-            app.UseUserIdMiddleware();  
             app.UseAuthorization();
+            app.UseUserIdMiddleware();
             app.UseExceptionMiddleware();
 
 

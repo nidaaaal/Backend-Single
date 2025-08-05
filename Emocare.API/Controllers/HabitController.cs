@@ -1,11 +1,13 @@
 ﻿using Emocare.Application.DTOs.Habits;
 using Emocare.Application.Interfaces;
 using Emocare.Infrastructure.Migrations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emocare.API.Controllers
 {
+    [Authorize(Roles ="User")]
     [Route("api/habit")]
     [ApiController]
     public class HabitController : ControllerBase
@@ -16,7 +18,7 @@ namespace Emocare.API.Controllers
         {
             _habitServices = habitServices;
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> UserHabit() => Ok(await _habitServices.GetUserHabitsAsync());
 

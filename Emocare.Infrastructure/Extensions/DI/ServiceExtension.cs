@@ -4,6 +4,7 @@ using Emocare.Application.Services;
 using Emocare.Domain.Interfaces.Extension;
 using Emocare.Domain.Interfaces.Helper.AiChat;
 using Emocare.Domain.Interfaces.Helper.Auth;
+using Emocare.Domain.Interfaces.Helper.Common;
 using Emocare.Domain.Interfaces.Repositories;
 using Emocare.Domain.Interfaces.Repositories.Chat;
 using Emocare.Domain.Interfaces.Repositories.Habits;
@@ -16,6 +17,7 @@ using Emocare.Infrastructure.Repositories.Habits;
 using Emocare.Infrastructure.Repositories.User;
 using Emocare.Shared.Helpers.Auth;
 using Emocare.Shared.Helpers.Chat;
+using Emocare.Shared.Helpers.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,20 +45,20 @@ namespace Emocare.Infrastructure.Extensions.DI
             services.AddScoped<IHabitRepository,HabitRepository>();
             services.AddScoped<IHabitHabitCompletionRepository, HabitHabitCompletionRepository>();
             services.AddScoped<IHabitCategoryRepository, HabitCategoryRepository>();    
+            services.AddScoped<INotificationSubscriptionRepository, NotificationSubscriptionRepository>();
         }
 
         public static void ConfigureServices(this IServiceCollection services)
         {
             services.AddScoped<ICloudinaryService, CloudinaryService>();
             services.AddScoped<IAuthenticationServices,AuthenticationServices>();
-            services.AddScoped<IUserManageServices,UserManageServices>();   
             services.AddScoped<IUserService,UserServices>();    
             services.AddScoped<IWellnessTaskService, WellnessTaskService>();
             services.AddScoped<IChatService, ChatService>();
             services.AddScoped<IReflectionServices, ReflectionServices>();
             services.AddScoped<IPsychologistServices,PsychologistServices>();
             services.AddScoped<IHabitServices,HabitServices>();
-            services.AddSingleton<WebPushNotificationService>();
+            services.AddScoped<INotificationsServices, NotificationsServices>();
         }
 
         public static void ConfigureHelper(this IServiceCollection services)
@@ -68,6 +70,8 @@ namespace Emocare.Infrastructure.Extensions.DI
             services.AddHttpClient<IOpenRouterStreamService,OpenRouterStreamService>();
             services.AddHttpContextAccessor();
             services.AddScoped<IUserFinder, UserFinder>();
+            services.AddSingleton<IPushNotificationHelper,PushNotificationHelper>();
+
 
         }
 

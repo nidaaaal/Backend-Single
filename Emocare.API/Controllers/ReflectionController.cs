@@ -1,9 +1,11 @@
 ﻿using Emocare.Application.DTOs.Reflection;
 using Emocare.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emocare.API.Controllers
 {
+    [Authorize(Roles ="User")]
     [Route("api/reflection")]
     [ApiController]
     public class ReflectionController : ControllerBase

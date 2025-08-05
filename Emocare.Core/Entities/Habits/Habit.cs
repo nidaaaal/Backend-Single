@@ -28,6 +28,8 @@ namespace Emocare.Domain.Entities.Habits
 
         public DateTime? EndDate { get; set; }
 
+        public TimeSpan? ReminderTime { get; set; }
+
         [Required]
         public Guid UserId { get; set; }
 

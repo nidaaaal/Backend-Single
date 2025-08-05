@@ -29,7 +29,7 @@ namespace Emocare.Infrastructure.Extensions.Relations
                 .HasForeignKey(x=>x.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            entity.HasMany(x=>x.PushSubscriptions).WithOne(x=>x.Users)
+            entity.HasMany(x=>x.UserPushSubscriptions).WithOne(x=>x.Users)
                 .HasForeignKey(x=>x.UserId)
                 .OnDelete(DeleteBehavior.Cascade).IsRequired(false);   
         }

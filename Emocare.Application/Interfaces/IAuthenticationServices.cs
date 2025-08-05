@@ -8,5 +8,6 @@ namespace Emocare.Application.Interfaces
     public interface IAuthenticationServices
     {
         Task <ApiResponse<AuthResponse>> Login(LoginDto dto);
+        ApiResponse<string> RefreshSignalRToken();
     }
 }

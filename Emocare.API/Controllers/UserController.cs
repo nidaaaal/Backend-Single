@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Emocare.API.Controllers
 {
-    [Route("api/users/")]
+    [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -15,6 +15,14 @@ namespace Emocare.API.Controllers
         {
             _userServices = userServices;
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+           => Ok(await _userServices.GetAllDetails());
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Ban(Guid id)
+       => Ok(await _userServices.BanUser(id));
 
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUser([FromBody] UserRegisterDto dto)

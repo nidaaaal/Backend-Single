@@ -28,6 +28,8 @@ namespace Emocare.Application.DTOs.Auth
         public bool IsActive { get; set; }
         public bool IsLocked { get; set; }
         public string Token { get; set; } = "";
+        public string SignalRToken { get; set; } = "";
+
         public string RefreshToken { get; set; } = "";
     } 
     #endregion

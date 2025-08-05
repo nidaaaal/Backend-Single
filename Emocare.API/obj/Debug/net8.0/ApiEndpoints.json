@@ -1,41 +1,5 @@
 [
   {
-    "ContainingType": "Emocare.API.Controllers.UserManageController",
-    "Method": "GetPsychologist",
-    "RelativePath": "api/admin/allPsychologist",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Emocare.API.Controllers.UserManageController",
-    "Method": "GetAll",
-    "RelativePath": "api/admin/allUsers",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Emocare.API.Controllers.UserManageController",
-    "Method": "Verify",
-    "RelativePath": "api/admin/psychologist/{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Emocare.API.Controllers.TaskController",
     "Method": "GetAllTask",
     "RelativePath": "api/admin/Task",
@@ -115,22 +79,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Emocare.API.Controllers.UserManageController",
-    "Method": "Ban",
-    "RelativePath": "api/admin/user/{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Emocare.API.Controllers.AuthenticationController",
     "Method": "ChangeByPrevious",
     "RelativePath": "api/authentication/ForgotPassword/ByPrevious",
@@ -176,6 +124,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.AuthenticationController",
+    "Method": "Logout",
+    "RelativePath": "api/authentication/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.AuthenticationController",
+    "Method": "GetToken",
+    "RelativePath": "api/authentication/signalRToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -347,6 +315,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Emocare.API.Controllers.NotificationController",
+    "Method": "Reminder",
+    "RelativePath": "api/Notification/reminder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestSubscription",
+        "Type": "Emocare.Application.DTOs.Common.RequestSubscription",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.NotificationController",
+    "Method": "Subscribe",
+    "RelativePath": "api/Notification/subscribe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestSubscription",
+        "Type": "Emocare.Application.DTOs.Common.RequestSubscription",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.PsychologistController",
+    "Method": "GetPsychologist",
+    "RelativePath": "api/psychologist/allPsychologist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.PsychologistController",
+    "Method": "Verify",
+    "RelativePath": "api/psychologist/psychologist/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Emocare.API.Controllers.PsychologistController",
     "Method": "RegisterPsychologist",
     "RelativePath": "api/psychologist/register",
@@ -471,6 +497,32 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserController",
+    "Method": "GetAll",
+    "RelativePath": "api/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Emocare.API.Controllers.UserController",
+    "Method": "Ban",
+    "RelativePath": "api/users/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

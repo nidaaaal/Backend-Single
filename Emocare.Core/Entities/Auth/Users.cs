@@ -76,7 +76,7 @@ namespace Emocare.Domain.Entities.Auth
         public ICollection<ChatSession>? ChatSessions { get; set; }
         public ICollection<ChatMessage>? ChatMessages { get; set; }
         public ICollection<Habit>? Habits { get; set; }
-        public ICollection<UserPushSubscription>? PushSubscriptions { get; set; }
+        public ICollection<UserPushSubscription>? UserPushSubscriptions { get; set; }
 
     }
 

@@ -187,6 +187,21 @@ namespace Emocare.Application.Services
 
             return ResponseBuilder.Success("New ProfilePicture Added", "ProfilePicture Added Successfully", "UpdateProfile");
         }
+        public async Task<ApiResponse<IEnumerable<Users>>> GetAllDetails()
+        {
+            var users = await _userRepository.GetAllActive();
+            return ResponseBuilder.Success(users, "Users Data Fetched", "GetAllDetails");
 
+        }
+
+        public async Task<ApiResponse<string>> BanUser(Guid userId)
+        {
+            var user = await _userRepository.GetById(userId);
+            if (user == null) return ResponseBuilder.Fail<string>("No UserFound", "BanUser", 404);
+            user.Status = UserStatus.Banned;
+            await _userRepository.Update(user);
+            return ResponseBuilder.Success("User Banned", "Users Data Updated", "BanUser");
+
+        }
     }
 }

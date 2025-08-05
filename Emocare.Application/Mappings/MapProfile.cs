@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Emocare.Application.DTOs.Chat;
+using Emocare.Application.DTOs.Common;
 using Emocare.Application.DTOs.Habits;
 using Emocare.Application.DTOs.Reflection;
 using Emocare.Application.DTOs.Task;
@@ -23,7 +24,7 @@ namespace Emocare.Application.Mappings
             CreateMap<ChatMessage, ChatResponseDto>().ForMember(des => des.Role, opt => opt.MapFrom(x => x.Role.ToString()));
             CreateMap<JournalEntry, DailyResponseDto>().ForMember(des => des.Mood, opt => opt.MapFrom(x => x.Mood.ToString()))
                                                        .ForMember(des => des.Reflection, opt => opt.MapFrom(x => x.AIReflection));
-
+            CreateMap<UserPushSubscription, RequestSubscription>();
             CreateMap<Habit,AddHabit>().ReverseMap();
         }
     }
